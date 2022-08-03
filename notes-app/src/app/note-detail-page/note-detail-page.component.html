@@ -1,0 +1,21 @@
+<p *ngIf="isLoading">...Loading...</p>
+<div *ngIf="note && !isLoading">
+    <div *ngIf="!isEditing">
+        <h1>{{ note.title }}</h1>
+        <p>{{note.content}}</p>
+        <button (click)="editClicked()">Edit</button>
+    </div>
+    <div *ngIf="isEditing">
+        <input placeholder="Enter a title..."
+        [(ngModel)]="updatedTitle">
+        <textarea placeholder="type your note here"
+        [(ngModel)]="updatedContent"></textarea>
+        <button (click)="cancelClicked()">Cancel</button>
+        <button (click)="saveClicked()">Save</button>
+
+    </div>
+</div>
+
+<app-note-note-found-page
+*ngIf="!note && !isLoading">
+</app-note-note-found-page>
